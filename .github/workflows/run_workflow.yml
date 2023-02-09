@@ -40,6 +40,8 @@ jobs:
         prerelease-name: ${{inputs.prerelease_name}}
         stamp-mode: ${{inputs.version_type}}
         app-name: ${{inputs.app_name}}
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
      
     - name: Use the output from vmn action
       run: |
