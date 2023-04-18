@@ -35,6 +35,7 @@ jobs:
     - id: foo
       uses: progovoy/vmn-action@vmna_0.1.59
       with:
+        do-stamp: true
         release-candidate: ${{inputs.release_candidate}}
         release: ${{inputs.release}}
         prerelease-name: ${{inputs.prerelease_name}}
