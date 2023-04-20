@@ -26,12 +26,10 @@ on:
         description: App name
         required: true
 
-permissions: write-all
-
 jobs:
   build_pkg:
     runs-on: ubuntu-latest
-      
+    permissions: write-all
     steps:
     - uses: actions/checkout@v2.5.0
 
