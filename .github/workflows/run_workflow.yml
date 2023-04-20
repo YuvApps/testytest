@@ -29,6 +29,10 @@ on:
 jobs:
   build_pkg:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: read  # This is required for actions/checkout
+      
     steps:
     - uses: actions/checkout@v2.5.0
 
@@ -43,6 +47,7 @@ jobs:
         app-name: ${{inputs.app_name}}
       env:
         GITHUB_TOKEN: ${{ github.token }}
+
 
 
 
