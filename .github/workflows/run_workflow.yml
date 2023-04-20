@@ -30,9 +30,19 @@ jobs:
   build_pkg:
     runs-on: ubuntu-latest
     permissions:
+      actions: write
+      checks: write
+      contents: write
+      deployments: write
       id-token: write
-      contents: write              # This is required for actions/checkout@v1
-      security-events: write   # To upload sarif files
+      issues: write
+      discussions: write
+      packages: write
+      pages: write
+      pull-requests: write
+      repository-projects: write
+      security-events: write
+      statuses: write
       
     steps:
     - uses: actions/checkout@v2.5.0
