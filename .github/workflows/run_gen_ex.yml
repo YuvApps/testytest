@@ -1,4 +1,4 @@
-name: Run Stamp Non-First Release Candidate
+name: Run Generator Example
 
 on:
   workflow_dispatch:

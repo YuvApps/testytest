@@ -1,4 +1,4 @@
-name: Run Stamp Non-First Release Candidate
+name: Run Release A Release Candidate Version
 
 on:
   workflow_dispatch:
