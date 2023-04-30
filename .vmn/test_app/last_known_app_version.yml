@@ -1,4 +1,3 @@
-prerelease: yuvalaha
-prerelease_count:
-  yuvalaha: 2
-version_to_stamp_from: 0.0.474
+prerelease: release
+prerelease_count: {}
+version_to_stamp_from: 0.0.475
