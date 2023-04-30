@@ -31,9 +31,6 @@ on:
       prerelease_name:
         type: string
         description: Name of Prereleased Version
-      stamp_from_version:
-        type: string
-        description: Overwrite the base that VMN stamp will work from
       do_gen:
         type: boolean
         description: Create a generated version file?
@@ -47,18 +44,6 @@ on:
       gen_custom_yaml_path: 
         type: string
         description: Path for custom YAML file
-      show_log_on_error: 
-        type: boolean
-        description: Do you want to see the VMN log on error?
-        default: false
-      debug_mode: 
-        type: boolean
-        description: Show extra logs?
-        default: false
-      install_nonstable_vmn_version: 
-        type: boolean
-        description: Install latest RC version of VMN
-        default: false    
 
 
 jobs:
@@ -76,14 +61,10 @@ jobs:
         release-candidate: ${{inputs.release_candidate }}
         release: ${{inputs.release }}
         prerelease-name: ${{inputs.prerelease_name }}
-        stamp-from-version: ${{inputs.stamp_from_version }}
         do-gen: ${{inputs.do_gen }}
         gen-template-path: ${{inputs.gen_template_path }}
         gen-output-path: ${{inputs.gen_output_path }}
         gen-custom-yaml-path: ${{inputs.gen_custom_yaml_path }}
-        show-log-on-error: ${{inputs.show_log_on_error }}
-        debug-mode: ${{inputs.debug_mode }}
-        install-nonstable-vmn-version: ${{inputs.install_nonstable_vmn_version }}
       env:
         GITHUB_TOKEN: ${{ github.token }} 
       
