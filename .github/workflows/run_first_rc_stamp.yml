@@ -11,7 +11,6 @@ on:
         type: choice
         description: Release mode
         options:
-        - none
         - patch
         - minor
         - major
