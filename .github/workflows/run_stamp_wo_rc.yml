@@ -1,0 +1,84 @@
+name: Run Stamp Without Release Candidate
+
+on:
+  workflow_dispatch:
+    inputs:
+      app_name:
+        type: string
+        description: App name
+        required: true
+      do_stamp:
+        type: boolean
+        description: Do you want to stamp a version?
+        default: false
+      stamp_mode:
+        type: choice
+        description: Release mode
+        options:
+        - none
+        - patch
+        - minor
+        - major
+        required: true
+      release_candidate:
+        type: boolean
+        description: Do you want to create a Release Candidate?
+        default: false
+      release:
+        type: boolean
+        description: Do you want to release a RC version? (Prereleased -> Released)
+        default: false
+      prerelease_name:
+        type: string
+        description: Name of Prereleased Version
+      stamp_from_version:
+        type: string
+        description: Overwrite the base that VMN stamp will work from
+      do_gen:
+        type: boolean
+        description: Create a generated version file?
+        default: false
+      gen_template_path: 
+        type: string
+        description: Path for Jinja2 Template file
+      gen_output_path: 
+        type: string
+        description: Path for output file
+      gen_custom_yaml_path: 
+        type: string
+        description: Path for custom YAML file
+      show_log_on_error: 
+        type: boolean
+        description: Do you want to see the VMN log on error?
+        default: false
+      debug_mode: 
+        type: boolean
+        description: Show extra logs?
+        default: false
+      install_nonstable_vmn_version: 
+        type: boolean
+        description: Install latest RC version of VMN
+        default: false    
+
+
+jobs:
+  build_pkg:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.5.0
+
+    - id: foo
+      uses: progovoy/vmn-action@vmna_0.1.70
+      with:
+        app-name: ${{inputs.app_name}}
+        do-stamp: ${{ inputs.do_stamp }}
+        stamp-mode: ${{inputs.stamp_mode}}
+      env:
+        GITHUB_TOKEN: ${{ github.token }} 
+      
+    - name: Use the output from vmn action
+      run: |
+        echo "The Version is: ${{steps.foo.outputs.verstr}}"
+        echo "Is the code dirty?: ${{steps.foo.outputs.dirty}}"
+        echo "Is the app in Release Candidate Mode: ${{steps.foo.outputs.is_in_rc_mode}}"
+        echo "The whole vmn show for you to parser is: ${{steps.foo.outputs.verbose_yaml}}"
