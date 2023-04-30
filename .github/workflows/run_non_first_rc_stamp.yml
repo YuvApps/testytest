@@ -36,7 +36,6 @@ jobs:
         app-name: ${{inputs.app_name}}
         do-stamp: true
         release-candidate: true
-        release: false
         prerelease-name: ${{inputs.prerelease_name}}
         show-log-on-error: ${{ inputs.show_log_on_error }}
         debug-mode: ${{ inputs.debug_mode }}
