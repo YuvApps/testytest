@@ -53,24 +53,24 @@ jobs:
     - uses: actions/checkout@v2.5.0
 
     - id: foo
-      uses: progovoy/vmn-action@vmna_0.1.71
+      uses: progovoy/vmn-action@vmna_0.1.72
       with:
-        app-name: ${{inputs.app_name}}
+        app-name: ${{ inputs.app_name }}
         do-stamp: ${{ inputs.do_stamp }}
-        stamp-mode: ${{inputs.stamp_mode }}
-        release-candidate: ${{inputs.release_candidate }}
-        release: ${{inputs.release }}
-        prerelease-name: ${{inputs.prerelease_name }}
-        do-gen: ${{inputs.do_gen }}
-        gen-template-path: ${{inputs.gen_template_path }}
-        gen-output-path: ${{inputs.gen_output_path }}
-        gen-custom-yaml-path: ${{inputs.gen_custom_yaml_path }}
+        stamp-mode: ${{ inputs.stamp_mode }}
+        release-candidate: ${{ inputs.release_candidate }}
+        release: ${{ inputs.release }}
+        prerelease-name: ${{ inputs.prerelease_name }}
+        do-gen: ${{ inputs.do_gen }}
+        gen-template-path: ${{ inputs.gen_template_path }}
+        gen-output-path: ${{ inputs.gen_output_path }}
+        gen-custom-yaml-path: ${{ inputs.gen_custom_yaml_path }}
       env:
         GITHUB_TOKEN: ${{ github.token }} 
       
     - name: Use the output from vmn action
       run: |
-        echo "The Version is: ${{steps.foo.outputs.verstr}}"
-        echo "Is the code dirty?: ${{steps.foo.outputs.dirty}}"
-        echo "Is the app in Release Candidate Mode: ${{steps.foo.outputs.is_in_rc_mode}}"
-        echo "The whole vmn show for you to parser is: ${{steps.foo.outputs.verbose_yaml}}"
+        echo "The Version is: ${{ steps.foo.outputs.verstr }}"
+        echo "Is the code dirty?: ${{ steps.foo.outputs.dirty }}"
+        echo "Is the app in Release Candidate Mode: ${{ steps.foo.outputs.is_in_rc_mode }}"
+        echo "The whole vmn show for you to parser is: ${{ steps.foo.outputs.verbose_yaml }}"
