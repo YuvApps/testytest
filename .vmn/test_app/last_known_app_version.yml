@@ -1,3 +1,4 @@
-prerelease: release
-prerelease_count: {}
-version_to_stamp_from: 0.0.476
+prerelease: second
+prerelease_count:
+  second: 1
+version_to_stamp_from: 0.0.478
